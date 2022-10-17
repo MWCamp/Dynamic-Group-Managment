@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+	<fullName>DGR_Must_Have_Group</fullName>
+	<active>true</active>
+	<description>For an active rule you must have a group Id</description>
+	<errorConditionFormula>IF(
+AND(
+   Active__c == True
+   , ISBLANK(Group_ID__c)
+)
+, true
+, false
+)</errorConditionFormula>
+	<errorDisplayField>Group_ID__c</errorDisplayField>
+	<errorMessage>Active rules must have a Group defined</errorMessage>
+</ValidationRule>

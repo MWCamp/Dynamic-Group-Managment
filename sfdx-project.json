@@ -1,0 +1,19 @@
+{
+    "packageDirectories": [
+        {
+            "path": "force-app",
+            "default": true,
+            "package": "DynamicGroupMgmt",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT"
+        }
+    ],
+    "name": "Dynamic Group Managment",
+    "namespace": "",
+    "sfdcLoginUrl": "https://mikecampconsulting-dev-ed.my.salesforce.com/",
+    "sourceApiVersion": "55.0",
+    "packageAliases": {
+        "DynamicGroupMgmt": "0Ho4w000000k9bhCAA",
+        "DynamicGroupMgmt@0.1.0-1": "04t4w0000015fLiAAI"
+    }
+}

@@ -1,1 +1,0 @@
-<apex:page standardController="User" extensions="DGM_User_EXT" action="{!updateGroups}" showHeader="false"/>

@@ -1,0 +1,79 @@
+<!-- /*******************************************************************************************************************************
+ *  
+ *  @Author         Mike Camp 
+ *  @Date Created   08/26/2016
+ *  @Description    This is the DGM Rule Create/Edit Page
+ * 
+ *******************************************************************************************************************************/
+/*
+CHANGE LOG
+	08/26/2016 MCAMP     - initial version
+	09/30/2016 MCAMP     - Added Profile Based Rules
+*/ -->
+<apex:page showHeader="true" sidebar="true"
+	tabStyle="Dynamic_Group_Rule__c"
+	standardController="Dynamic_Group_Rule__c"
+	extensions="DGM_Rule_EXT" >
+	<apex:messages rendered="!showGeneralError"/>
+	<apex:sectionheader title="{!$ObjectType.Dynamic_Group_Rule__c.label} Edit"
+		subtitle="{!IF(ISNULL(Dynamic_Group_Rule__c.Name), 'New Dynamic Group Rule',Dynamic_Group_Rule__c.Name)}"/>
+	<apex:form id="DGREdit">
+		<apex:pageblock mode="edit" title="{!$ObjectType.Dynamic_Group_Rule__c.label} Edit">
+			<apex:pageblockbuttons >
+				<apex:commandbutton value="Save" action="{!doSave}"/>
+				<apex:commandButton value="Save & New" action="{!doSaveAndNew}"/>
+				<apex:commandbutton value="Cancel" action="{!Cancel}"/>
+			</apex:pageblockbuttons>
+
+			<!-- **********   [Record Type : Master ]   **********  -->
+			<apex:outputpanel >
+				<apex:pageblocksection title="Rule Type" showheader="true" columns="2" rendered="{!showRecordType}" >
+					<apex:selectList id="Record_Type" 
+						value="{!Dynamic_Group_Rule__c.RecordTypeId}"
+						multiselect="false"
+						size="1"
+						rendered="{!showRecordType}">
+						<apex:actionSupport event="onchange" action="{!onchangeRecordType}" reRender="DGREdit"/> 
+						<apex:selectOptions value="{!RTOptions}" />
+					</apex:selectList>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Information" showheader="true" columns="2" rendered="{!showProfile||showPS}">
+					<apex:selectList id="Permission_Set" 
+						value="{!Dynamic_Group_Rule__c.Permission_Set_ID__c}"
+						multiselect="false"
+						size="1"
+						rendered="{!showPS}">
+						<apex:actionSupport event="onchange" action="{!onchangePS}" reRender="DGREdit"/> 
+						<apex:selectOptions value="{!PSOptions}" />
+					</apex:selectList>
+				   <apex:selectList id="Profile"
+						value="{!Dynamic_Group_Rule__c.Profile_Id__c}"
+						multiselect="false"
+						size="1"
+						rendered="{!showProfile}">
+						<apex:actionSupport event="onchange" action="{!onchangeProfile}" reRender="DGREdit"/> 
+						<apex:selectOptions value="{!ProfileOptions}" />
+					</apex:selectList>
+					<apex:selectList id="Group_list"
+						value="{!Dynamic_Group_Rule__c.Group_ID__c}"
+						multiselect="false"
+						size="1" 
+						rendered="{!showProfile||showPS}">
+						<apex:actionSupport event="onchange" action="{!onchangeGroup}" reRender="DGREdit" /> 
+						<apex:selectOptions value="{!Groupoptions}" />                   
+					</apex:selectList>
+					 <apex:pageMessage severity="error" strength="1" summary="Active Permission Set Based rules must have a Permission Set defined." rendered="{!showPSError}"/>
+					 <apex:pageMessage severity="error" strength="1" summary="Active Profile Based rules must have a Profile defined." rendered="{!showProfileError}"/>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="Settings" showheader="true" columns="2">
+					<apex:inputfield value="{!Dynamic_Group_Rule__c.Active__c}" required="false"/>
+					<apex:inputfield value="{!Dynamic_Group_Rule__c.Remove_on_no_Link__c}" required="false"/>
+				</apex:pageblocksection>
+				<apex:pageblocksection title="System Information" showheader="true" columns="2">
+					<apex:outputfield value="{!Dynamic_Group_Rule__c.Name}"/>
+					<apex:outputfield value="{!Dynamic_Group_Rule__c.OwnerId}"/>
+				</apex:pageblocksection>
+			</apex:outputpanel>
+		</apex:pageblock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+	<fullName>Remove_on_no_Link__c</fullName>
+	<defaultValue>true</defaultValue>
+	<description>Removes user from group who do not have this Permission Set or Profile</description>
+	<externalId>false</externalId>
+	<label>Remove on no Link</label>
+	<trackTrending>false</trackTrending>
+	<type>Checkbox</type>
+</CustomField>
