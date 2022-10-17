@@ -30,14 +30,6 @@ __________________
 
 - initial version
 
-Installing the Source Code (Developers)
-=======================================
 
-If you are a developer obtain the source code from this repository if you wish to develop it further and/or contribute to it. Click the button below to deploy the source code to your developer or sandbox org.
-
-<a href="https://githubsfdeploy.herokuapp.com?owner=MWCamp&repo=Dynamic-Group-Managment">
-  <img alt="Deploy to Salesforce"
-       src="https://github.com/MWCamp/Dynamic-Group-Managment/raw/master/images/deploy.png">
-</a>
 
 
